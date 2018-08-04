@@ -33,6 +33,14 @@
                 map: map,
                 title: 'first try!'
             });
+
+            var infowindow = new google.maps.infowindow({
+                content: 'Do you ever felt ki main dobara se yhi khud se bnane ka try krunga'
+            });
+            
+            marker.addListener('click',function() {
+               infowindow.open(map, marker); 
+            });
         }
     </script>
 
