@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        html,
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #map {
+            height: 100%;
+        }
+        
+        </style>
+    </head>
+    <body>
+     <div id="map"></div>
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+
+            var noida = { lat: -34.397, lng: 150.644 };
+            var marker = new google.maps.Marker({
+                position: noida,
+                map: map,
+                title: 'first try!'
+            });
+        }
+    </script>
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZoBY48C_vdDo6wGthteUa2IU1-r9iMo8&callback=initMap" async defer></script>
+
+    </body>
+</html>
