@@ -21,25 +21,62 @@
      <div id="map"></div>
     <script>
         var map;
+
+        var marker = [];
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: -34.397, lng: 150.644 },
                 zoom: 8
             });
 
-            var noida = { lat: -34.397, lng: 150.644 };
-            var marker = new google.maps.Marker({
-                position: noida,
+        //     var noida = { lat: -34.397, lng: 150.644 };
+        //     var marker = new google.maps.Marker({
+        //         position: noida,
+        //         map: map,
+        //         title: 'first try!'
+        //     });
+
+        //     var infowindow = new google.maps.infowindow({
+        //         content: 'Do you ever felt ki main dobara se yhi khud se bnane ka try krunga'
+        //     });
+            
+        //     marker.addListener('click',function() {
+        //        infowindow.open(map, marker); 
+        //     });
+        // }
+
+        var locations = [
+            {title: 'Noida sec 62', location: {lat: 26.7713024, lng: 73.2393}},
+            { title: 'Noida city center', location: { lat: 28.5355, lng: 77.3910 } },
+            { title: 'Delhi', location: { lat: 28.7041, lng: 77.1025 } },
+            { title: 'aNAND vIHAR', location: { lat: 29.7713024, lng: 73.9632393 } },
+            { title: 'pITAMPURA', location: { lat: 30.7713024, lng: 75.9632393 } },
+            { title: 'Kaushambi', location: { lat: 40.7713024, lng: 76.9632393 } },
+        ];
+
+        // the following group uses the location array to create an array of marker on initialize.
+
+        for(var i = 0; i < locations.length; i++){
+            // get the position from the location array.
+            var position = locations[i].location;
+            var title = locations[i].title;
+
+            // create the marker per location and put into the marker array
+
+            var marker = new google.map.Marker({
                 map: map,
-                title: 'first try!'
+                position: position,
+                title: title,
+                animation: google.maps.Animation.DROP,
+                id: i
             });
 
-            var infowindow = new google.maps.infowindow({
-                content: 'Do you ever felt ki main dobara se yhi khud se bnane ka try krunga'
-            });
-            
-            marker.addListener('click',function() {
-               infowindow.open(map, marker); 
+            // ?push the marker to our array of markers
+
+            markers.push(marker);
+            marker.addListener('click', function() {
+                populateInfoWindow(this, largeInfowindow);
+                
             });
         }
     </script>
